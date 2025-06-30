@@ -1,5 +1,7 @@
-from fastmcp import Client
 import asyncio
+
+from fastmcp import Client
+
 
 async def main():
     # Connect via SSE
@@ -45,6 +47,7 @@ async def main():
 
         sin_result = await client.call_tool("sin", {"angle": angle_deg})
         print(f"sin({angle_deg}°) = {sin_result}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

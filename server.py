@@ -1,23 +1,28 @@
 # server.py
-from fastmcp import FastMCP
 import math
 
+from fastmcp import FastMCP
+
 mcp = FastMCP("Calculator Demo 🚀")
+
 
 @mcp.tool
 def add(a: int, b: int) -> int:
     """Add two numbers"""
     return a + b
 
+
 @mcp.tool
 def multiply(a: float, b: float) -> float:
     """Multiplies two numbers."""
     return a * b
 
+
 @mcp.tool
 def subtract(a: int, b: int) -> int:
     """Subtracts two numbers."""
     return a - b
+
 
 @mcp.tool
 def divide(a: float, b: float) -> float:
@@ -26,6 +31,7 @@ def divide(a: float, b: float) -> float:
         raise ValueError("Cannot divide by zero.")
     return a / b
 
+
 @mcp.tool
 def percentage(part: float, whole: float) -> float:
     """Calculates the percentage of a part relative to a whole."""
@@ -33,17 +39,20 @@ def percentage(part: float, whole: float) -> float:
         raise ValueError("Whole cannot be zero.")
     return (part / whole) * 100
 
+
 @mcp.tool
 def power(base: float, exponent: int) -> float:
     """Raises a number to the power of another."""
-    return base ** exponent
+    return base**exponent
+
 
 @mcp.tool
 def square_root(number: float) -> float:
     """Calculates the square root of a number."""
     if number < 0:
         raise ValueError("Cannot calculate square root of a negative number.")
-    return number ** 0.5
+    return number**0.5
+
 
 @mcp.tool
 def factorial(n: int) -> int:
@@ -56,6 +65,7 @@ def factorial(n: int) -> int:
     for i in range(2, n + 1):
         result *= i
     return result
+
 
 @mcp.tool
 def fibonacci(n: int) -> int:
@@ -71,12 +81,14 @@ def fibonacci(n: int) -> int:
         a, b = b, a + b
     return b
 
+
 @mcp.tool
 def gcd(a: int, b: int) -> int:
     """Calculates the greatest common divisor of two numbers."""
     while b:
         a, b = b, a % b
     return abs(a)
+
 
 @mcp.tool
 def lcm(a: int, b: int) -> int:
@@ -111,41 +123,51 @@ def prime_factors(n: int) -> list:
         factors.append(n)
     return factors
 
+
 @mcp.tool
 def sin(angle: float) -> float:
     """Calculates the sine of an angle in radians."""
     return math.sin(angle)
+
 
 @mcp.tool
 def cos(angle: float) -> float:
     """Calculates the cosine of an angle in radians."""
     return math.cos(angle)
 
+
 @mcp.tool
 def tan(angle: float) -> float:
     """Calculates the tangent of an angle in radians."""
     return math.tan(angle)
+
 
 @mcp.tool
 def log(x: float, base: float = math.e) -> float:
     """Calculates the logarithm of a number with a given base."""
     return math.log(x, base)
 
+
 @mcp.tool
 def log10(x: float) -> float:
     """Calculates the base-10 logarithm of a number."""
     return math.log10(x)
+
 
 @mcp.tool
 def degrees_to_radians(degrees: float) -> float:
     """Converts an angle from degrees to radians."""
     return math.radians(degrees)
 
+
 @mcp.tool
 def radians_to_degrees(radians: float) -> float:
     """Converts an angle from radians to degrees."""
     return math.degrees(radians)
 
+
 if __name__ == "__main__":
     # mcp.run()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=8000, path="/mcp/calculator")
+    mcp.run(
+        transport="streamable-http", host="0.0.0.0", port=8000, path="/mcp/calculator"
+    )
